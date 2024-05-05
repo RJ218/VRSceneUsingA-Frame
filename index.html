@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+
+
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="color-toggle.js"></script>
+    <script src="target-marker.js"></script>
+    <script src="mover.js"></script>
+    <title>Hello World!</title>
+
+  </head>
+  <body>
+    <!--
+      The body includes the content you see in the page
+      Each element is defined using tags, like this <div></div>
+      The attributes like class="wrapper" let us style elements in the CSS
+    -->
+    <a-scene cursor="rayOrigin: mouse">
+      <a-assets>
+        <video id="cityVideo" src="https://cdn.aframe.io/360-video-boilerplate/video/city.mp4"></video>
+      </a-assets>
+      <a-box position="-1.5 1 -1.5" rotation="0 0 0" color="#4CC3D9" target-marker animation="property: rotation; to: 0 360 0; easing: linear; dur:5000; loop:true"></a-box>
+      <a-sphere position="0 4 -3" radius="1.25" color="#EF2D5E" mover></a-sphere>
+      <a-cylinder position="2 0.75 -2" radius="0.5" height="1.5" color="#FFC65D" color-toggle mover></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="8" color="#7BC8A4"></a-plane>
+      <a-videopshere src="#cityVideo"></a-videopshere>
+      
+      <a-entity id="rig">
+        <a-entity camera position="0 2 0" look-controls wasd-controls>
+          <a-cursor id="cursor" raycaster fuse="true" fusetimeout="3000"></a-cursor>
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
